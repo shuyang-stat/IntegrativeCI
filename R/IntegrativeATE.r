@@ -50,7 +50,7 @@
 #' The framework applies to asymptotically normal estimators, including the commonly-used regression imputation,
 #' weighting, and matching estimators.
 #'
-#' @import MASS ks Matching optmatch stats
+#' @import MASS ks Matching stats
 #'
 #'@references
 #'
@@ -265,7 +265,7 @@ IntegrativeATE<-function(I,x,u,y,A,method_val,method_ep,nboot){
     ## NNI for Y(0)
     loc.o<-which(AA2==0)
     Di.nni<-rep(0,length=n2)
-    out1<-Match(Y=yy2,Tr=AA2,X=thisps,distance.tolerance=0,ties=FALSE,Weight=2,M=1)
+    out1<-Matching::Match(Y=yy2,Tr=AA2,X=thisps,distance.tolerance=0,ties=FALSE,Weight=2,M=1)
     mdata1<-out1$mdata
     fromto<-loc.o
     Di.nni[fromto]<-table(factor(out1$index.control,levels=fromto))
@@ -542,7 +542,7 @@ IntegrativeATE<-function(I,x,u,y,A,method_val,method_ep,nboot){
     thisps<-xx2
     loc.o<-which(AA2==1)
     Di.nni<-rep(0,length=n2)
-    out1<-Match(Y=yy2,Tr=1-AA2,X=thisps,distance.tolerance=0,ties=FALSE, Weight=2,M=1)
+    out1<-Matching::Match(Y=yy2,Tr=1-AA2,X=thisps,distance.tolerance=0,ties=FALSE, Weight=2,M=1)
     mdata1<-out1$mdata
     fromto<-loc.o
     Di.nni[fromto]<-table(factor(out1$index.control,levels=fromto))
@@ -554,7 +554,7 @@ IntegrativeATE<-function(I,x,u,y,A,method_val,method_ep,nboot){
     truemboot1<-(yy2-Ey)*Di.nni+Ey
     loc.o<-which(AA2==0)
     Di.nni<-rep(0,length=n2)
-    out1<-Match(Y=yy2,Tr=AA2,X=thisps,distance.tolerance=0,ties=FALSE,Weight=2,M=1)
+    out1<-Matching::Match(Y=yy2,Tr=AA2,X=thisps,distance.tolerance=0,ties=FALSE,Weight=2,M=1)
     mdata1<-out1$mdata
     fromto<-loc.o
     Di.nni[fromto]<-table(factor(out1$index.control,levels=fromto))
@@ -576,7 +576,7 @@ IntegrativeATE<-function(I,x,u,y,A,method_val,method_ep,nboot){
     thisps<-x
     loc.o<-which(A==1)
     Di.nni<-rep(0,length=n)
-    out1<-Match(Y=y,Tr=1-A,X=thisps,distance.tolerance=0,ties=FALSE, Weight=2,M=1)
+    out1<-Matching::Match(Y=y,Tr=1-A,X=thisps,distance.tolerance=0,ties=FALSE, Weight=2,M=1)
     mdata1<-out1$mdata
     fromto<-loc.o
     Di.nni[fromto]<-table(factor(out1$index.control,levels=fromto))
@@ -589,7 +589,7 @@ IntegrativeATE<-function(I,x,u,y,A,method_val,method_ep,nboot){
     truemboot1<-(y-Ey)*Di.nni+Ey
     loc.o<-which(A==0)
     Di.nni<-rep(0,length=n)
-    out1<-Match(Y=y,Tr=A,X=thisps,distance.tolerance=0,ties=FALSE,Weight=2,M=1)
+    out1<-Matching::Match(Y=y,Tr=A,X=thisps,distance.tolerance=0,ties=FALSE,Weight=2,M=1)
     mdata1<-out1$mdata
     fromto<-loc.o
     Di.nni[fromto]<-table(factor(out1$index.control,levels=fromto))

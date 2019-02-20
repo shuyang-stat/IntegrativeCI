@@ -4,7 +4,7 @@
 # IntegrativeCI
 
 Implements integrative analyses for the average treatment effect
-combining main data with unmeasured confounder and validation data with
+combining main data with unmeasured confounders and validation data with
 supplementary information on these
 confounders.
 
@@ -26,13 +26,14 @@ give error-prone estimators in general.
 The integrative estimator leverages the information in the big main data
 to improve the estimation efficiencies yet preserve the consistencies of
 the initial estimators based solely on the validation data.
-Specifically, it uses the difference of the error-prone estimators
+Specifically, it exploits the difference of the error-prone estimators
 applied to the main data and the validation data, which is consistent
 for zero assuming that the main data and the validation data are
 representative of the same target population.
 
 The framework applies to asymptotically normal estimators, including the
-commonly-used regression imputation,weighting, and matching estimators.
+commonly-used regression imputation, (augmented) weighting, and matching
+estimators.
 
 ### Main Paper: Yang and Ding (2018)
 
