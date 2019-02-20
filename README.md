@@ -37,7 +37,7 @@ commonly-used regression imputation,weighting, and matching estimators.
 ### Main Paper: Yang and Ding (2018)
 
 Yang, S. and Ding, P. (2018). Combining multiple observational data
-sources to estimate causal effects. 
+sources to estimate causal effects. (<https://arxiv.org/abs/1801.0080>)
 
 ## Use
 

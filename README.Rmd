@@ -38,7 +38,7 @@ The framework applies to asymptotically normal estimators, including the commonl
 ### Main Paper: Yang and Ding (2018) 
 
 Yang, S. and Ding, P. (2018). Combining multiple observational data sources to estimate causal effects.
-\url{https://arxiv.org/abs/1801.00802}
+(https://arxiv.org/abs/1801.0080)
 
 ## Use
 
