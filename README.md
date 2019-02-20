@@ -13,7 +13,7 @@ confounders.
 ## Installation with `devtools`:
 
 ``` r
-devtools::install_github("shuyang1987/contTimeCausal")
+devtools::install_github("shuyang1987/IntegrativeCI")
 ```
 
 ## Description

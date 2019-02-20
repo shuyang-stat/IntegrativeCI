@@ -22,7 +22,7 @@ Implements integrative analyses for the average treatment effect combining main 
 ## Installation with `devtools`:
 
 ```{r, eval = FALSE}
-devtools::install_github("shuyang1987/contTimeCausal")
+devtools::install_github("shuyang1987/IntegrativeCI")
 ```
 
 ## Description
