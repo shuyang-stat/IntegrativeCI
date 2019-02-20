@@ -1,0 +1,12 @@
+Package: IntegrativeCI
+Type: Package
+Title: Integrative analyses of the average treatment effect combining big main data and smaller validation data
+Version: 0.1.0
+Author: Shu Yang
+Maintainer: Shu Yang <syang24@ncsu.edu>
+Description: Implements integrative analyses for the average treatment effect combining main data with unmeasured confounder and validation data with supplementary information on these confounders. 
+License: GPL (>=2)
+Encoding: UTF-8
+LazyData: true
+Depends: MASS, ks, Matching, optmatch, stats
+RoxygenNote: 6.1.1
