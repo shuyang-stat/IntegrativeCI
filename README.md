@@ -8,7 +8,7 @@ combining main data with unmeasured confounder and validation data with
 supplementary information on these
 confounders.
 
-### Visit the [package website](https://shuyang1987.github.io/IntegrativeCI/)
+### Visit the [package website](https://github.com/shuyang1987/IntegrativeCI)
 
 ## Installation with `devtools`:
 
