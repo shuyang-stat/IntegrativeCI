@@ -1,17 +1,7 @@
 #' Integrative Average Treatment Effect (IntegrativeATE)
 #'
 #' Implements integrative analyses for the average treatment effect combining main data with unmeasured confounder
-#' and validation data with supplementary information on these confounders. Under the unconfoundedness assumption
-#' with completely observed confounders, the smaller validation data allow for constructing consistent estimators
-#' for causal effects, but the big main data can only give error-prone estimators in general.
-#' The integrative estimator leverages the information in the big main data to improve the estimation
-#' efficiencies yet preserve the consistencies of the initial estimators based solely on the validation data.
-#' Specifically, it uses the difference of the error-prone estimators applied to the main data and the validation data,
-#' which is consistent to zero assuming that the main data and the validation data are representative of the same target population.
-#' The framework applies to asymptotically normal estimators, including the commonly-used regression imputation,
-#' weighting, and matching estimators.
-#' See: Yang, S. and Ding, P. (2018). Combining multiple observational data sources to estimate causal effects.
-#'
+#' and validation data with supplementary information on these confounders.
 #' @param I the vector of the binary indicator of the validation sample membership; i.e., 1 if the unit belongs to the validation sample, and 0 otherwise  (n x 1)
 #' @param x the matrix of confounders fully observed  (n x dim(x))
 #' @param u the matrix of confounders observed only for the validation sample; and NA otherwise (n x dim(u))
@@ -19,29 +9,46 @@
 #' @param A the vector of binary treatment (n x 1)
 #' @param method_val the estimation method for ATE on the validation sample
 #'
-#' can select one method from c("reg","ipw","aipw","matching")
+#' select 1 method from c("reg","ipw","aipw","matching")
 #'
-#' "reg": a linear regression imputation estimator of the ATE
+#' \code{"reg"}: a linear regression imputation estimator of the ATE
 #'
-#' "ipw": the inverse probability of treatment weighting estimator of the ATE, where the propensity score follows a logistic regression model
+#' \code{"ipw"}: the inverse probability of treatment weighting estimator of the ATE, where the propensity score follows a logistic regression model
 #'
-#' "aipw": the augmented inverse probability of treatment weighting estimator (Lunceford Davidian, 2004) of the ATE
+#' \code{"aipw"}: the augmented inverse probability of treatment weighting estimator (Lunceford Davidian, 2004) of the ATE
 #'
-#' "matching": the matching estimator (Abadie and Imbens, 2006) of the ATE, using matching based on (X,U) with replacement with the number of matches fixed at M.
+#' \code{"matching"}: the matching estimator (Abadie and Imbens, 2006) of the ATE, using matching based on (X,U) with replacement with the number of matches fixed at M.
 #'
 #' @param method_ep  the error prone estimation method applied to the validation sample and the main sample
 #'
-#' can select one or multiple methods from c("none","reg","ipw","aipw","matching")
+#' select >=1 methods from c("none","reg","ipw","aipw","matching")
 #'
-#' "none": return the initial estimator based soly on the validation sample
+#' \code{"none"}: return the initial estimator based soly on the validation sample
 #'
 #' @param nboot the number of bootstrap samples; if nboot=0, then return only the variance estimator based on the asymptotic result
 #'
 #' @return
+#' \itemize{
 #'
-#' \code{est}: estimate of the ATE
-#' \code{ve}:  variance estimate for \code{est} based on the asymptotic result
-#' \code{ve_boot}: variance estimate for \code{est} based on wild bootstrap
+#' \item \code{est}: estimate of the ATE
+#'
+#' \item \code{ve}:  variance estimate for \code{est} based on the asymptotic result
+#'
+#' \item \code{ve_boot}: variance estimate for \code{est} based on wild bootstrap
+#' }
+#'
+#' @details
+#' Under the unconfoundedness assumption
+#' with completely observed confounders, the smaller validation data allow for constructing consistent estimators
+#' for causal effects, but the big main data can only give error-prone estimators in general.
+#'
+#' The integrative estimator leverages the information in the big main data to improve the estimation
+#' efficiencies yet preserve the consistencies of the initial estimators based solely on the validation data.
+#' Specifically, it uses the difference of the error-prone estimators applied to the main data and the validation data,
+#' which is consistent for zero assuming that the main data and the validation data are representative of the same target population.
+#'
+#' The framework applies to asymptotically normal estimators, including the commonly-used regression imputation,
+#' weighting, and matching estimators.
 #'
 #' @import MASS ks Matching optmatch stats
 #'
@@ -52,6 +59,7 @@
 #'
 #'
 #' @examples
+#'
 #' n<-1000  # the (combined) main sample size (Samples 1 and 2)
 #' n2<-500  # the validation sample size (Sample 2)
 #'
@@ -89,7 +97,7 @@
 #' method_ep<-c("reg","ipw")
 #'
 #' true
-#' out<-IntegrativeATE(I,x,u,y,A,method_val,method_ep,nboot=50)
+#' out<-IntegrativeCI::IntegrativeATE(I,x,u,y,A,method_val,method_ep,nboot=50)
 #' out$est
 #' out$ve
 #' out$ve_boot
