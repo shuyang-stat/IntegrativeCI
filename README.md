@@ -8,7 +8,11 @@ combining main data with unmeasured confounders and validation data with
 supplementary information on these
 confounders.
 
-### Visit the [package website](https://github.com/shuyang1987/IntegrativeCI)
+### Disclaimer
+
+This R package/function is intended to provide a template for implementing the new methods. Modification of default options may be needed for a specific application. Please read the associated articles for method details.  
+
+To proficient R programmers are interested in advancing this R package, please contact me and I am happy to work together. 
 
 ## Installation with `devtools`:
 
